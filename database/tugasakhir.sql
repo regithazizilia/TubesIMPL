@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2023 at 02:11 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Dec 26, 2023 at 12:37 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,13 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bimbingan`
+--
+
+CREATE TABLE `bimbingan` (
+  `id_bimbingan` int(10) NOT NULL,
+  `nama_dsn` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login dosen`
 --
 
 CREATE TABLE `login dosen` (
   `username` varchar(15) NOT NULL,
   `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -41,7 +52,7 @@ CREATE TABLE `login dosen` (
 CREATE TABLE `login mahasiswa` (
   `username` varchar(15) NOT NULL,
   `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -61,11 +72,37 @@ CREATE TABLE `ta1` (
   `fakultas` varchar(30) NOT NULL,
   `tema` varchar(30) NOT NULL,
   `judul` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ta2`
+--
+
+CREATE TABLE `ta2` (
+  `NIM` int(10) NOT NULL,
+  `nama_mhs` varchar(30) NOT NULL,
+  `alamat` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `no_HP` int(12) NOT NULL,
+  `kelas` varchar(5) NOT NULL,
+  `angkatan` int(3) NOT NULL,
+  `jurusan` varchar(30) NOT NULL,
+  `fakultas` varchar(30) NOT NULL,
+  `tema` varchar(30) NOT NULL,
+  `judul` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `bimbingan`
+--
+ALTER TABLE `bimbingan`
+  ADD PRIMARY KEY (`id_bimbingan`);
 
 --
 -- Indexes for table `login dosen`
@@ -84,6 +121,13 @@ ALTER TABLE `login mahasiswa`
 --
 ALTER TABLE `ta1`
   ADD PRIMARY KEY (`NIM`);
+
+--
+-- Indexes for table `ta2`
+--
+ALTER TABLE `ta2`
+  ADD PRIMARY KEY (`NIM`),
+  ADD UNIQUE KEY `email` (`email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
